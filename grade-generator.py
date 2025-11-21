@@ -59,7 +59,7 @@ def print_summary(assignments, total_fa_wg, total_sa_wg, total_fa_weight, total_
 
     print(f"Total Formative: {total_fa_wg:.2f} / {int(total_fa_weight)}")
     print(f"Total Summative: {total_sa_wg:.2f} / {int(total_sa_weight)}")
-    print("-" * 27)
+    print("-" * 19)
 
     print(f"Total Grade:        {total_grade:.2f} / {int(total_fa_weight + total_sa_weight)}")
     print(f"GPA:                {gpa:.4f}")
@@ -79,6 +79,26 @@ def print_summary(assignments, total_fa_wg, total_sa_wg, total_fa_weight, total_
     overall_pass = fa_ok and sa_ok
 
     print(f"Status:             {"PASS" if overall_pass else "FAIL"}")
+    # ----------- INSERT RESUBMISSION LOGIC HERE -----------
+    failed_fa = [a for a in assignments if a["Category"] == "FA" and a["Grade"] < 50]
+    print("Resubmission:     ", end="")
+
+    if not failed_fa:
+        print("  None (No formative assignments failed)")
+        
+    else:
+         if len(failed_fa) == 1:
+            print(f"  {failed_fa[0]['Assignment']}")
+         else:
+             max_weight = max(a["Weight"] for a in failed_fa)
+             highest_weight_fails = [a for a in failed_fa if a["Weight"] == max_weight]
+
+             if len(highest_weight_fails) == 1:
+                print(f"  {highest_weight_fails[0]['Assignment']}")
+             else:
+                print("  Multiple possible resubmissions:")
+                for a in highest_weight_fails:
+                    print(f"   - {a['Assignment']}")
 
     return {
         "total_grade": total_grade,

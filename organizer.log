@@ -1,0 +1,18 @@
+[2025-11-20 22:08:23] Created archive directory: archive
+
+==========================================
+Archived: 2025-11-20 22:08:24
+Original: grades.csv
+New Name: grades-20251120-220824.csv
+Location: archive
+==========================================
+
+File Contents:
+------------------------------------------
+Assignment,Category,Grade,Weight
+Python,FA,89,27
+Linux,SA,100,27
+Group coding lab,SA,43,21
+------------------------------------------
+
+[2025-11-20 22:08:24] Archiving session complete. Total files: 1
