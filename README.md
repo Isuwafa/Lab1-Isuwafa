@@ -1,273 +1,105 @@
-# Lab 1: Grade Generator & Organizer
+Individual Coding Lab – Grade Generator & CSV Archiver
 
-A two-part project consisting of a Python-based grade calculator and a Bash script for organizing CSV files.
+Author: Suwafa Iradukunda
+Course: Introduction to Python Programming and Databases
+Institution: African Leadership University (ALU)
+Term: 2025 September Term
 
-## Project Overview
+This project contains two main components:
 
-This project includes:
-1. **grade-generator.py** - An interactive Python application that calculates student grades
-2. **organizer.sh** - A Bash script that archives CSV files with timestamps
+grade-generator.py
+An interactive Python program that:
 
-## Part 1: Python Grade Generator
+Collects assignment information (name, category, grade, and weight)
 
-### Features
+Validates all user input
 
-- Interactive prompts for assignment details
-- Input validation for grades, categories, and weights
-- Weighted grade calculations
-- Formative (FA) and Summative (SA) category tracking
-- GPA calculation (0-5.0 scale)
-- PASS/FAIL determination based on 50% threshold in both categories
-- Identification of assignments requiring resubmission (grade < 50%)
-- Console summary output
-- CSV file export
+Computes weighted formative (FA) and summative (SA) scores
 
-### Usage
+Calculates final grade and GPA
 
-```bash
+Determines Pass/Fail status for each category and overall
+
+Identifies required resubmissions based on failed formative assessments
+
+Export all data into grades.csv
+
+organizer.sh
+A Bash shell script that:
+
+Archives CSV files in the current folder
+
+Generates timestamps for each archived file
+
+Writes detailed logs into organizer.log
+
+Moves renamed CSV files into an archive/ directory
+
+Is fully executable in a bash environment (Git Bash / Linux / WSL)
+
+🚀 How to Run the Python Program
+
+Make sure Python is installed. Then run:
+
 python3 grade-generator.py
-```
 
-### Input Requirements
 
-For each assignment, you'll be prompted for:
-- **Assignment Name**: Any descriptive text
-- **Category**: FA (Formative) or SA (Summative)
-- **Grade**: Number between 0-100
-- **Weight**: Positive number representing the assignment weight
+Follow the prompts to input:
 
-### Validation Rules
+Assignment name
 
-1. **Grades**: Must be between 0 and 100
-2. **Categories**: Must be "FA" or "SA" (case-insensitive)
-3. **Weights**: Must be positive numbers
-4. **Pass/Fail**: Student must achieve ≥50% in both FA and SA categories
+Category (FA/SA)
 
-### Calculation Logic
+Grade
 
-- **Weighted Grade**: `(Grade / 100) × Weight`
-- **Category Total**: Sum of all weighted grades in that category
-- **Final Grade**: `Total FA + Total SA`
-- **GPA**: `(Final Grade / 100) × 5.0`
+Weight
 
-### Example Run
+The program will automatically generate:
 
-```
---- Enter Assignment Details ---
-Assignment Name: Group Coding Lab
-Category (FA/SA): FA
-Grade Obtained (0-100): 19
-Weight: 30
+A grade summary
 
-Assignment 'Group Coding Lab' added successfully!
+Pass/Fail status
 
-Add another assignment? (y/n): y
+Resubmission requirements
 
---- Enter Assignment Details ---
-Assignment Name: Discussion Forum
-Category (FA/SA): FA
-Grade Obtained (0-100): 56
-Weight: 10
+A grades.csv file
 
-Assignment 'Discussion Forum' added successfully!
+📦 How to Run the Archive Shell Script
 
-Add another assignment? (y/n): n
-```
+The shell script must be executable.
 
-### Output Files
+✔ Step 1 — Open Git Bash in the project folder
 
-**grades.csv** - Contains all entered assignments in CSV format:
-```csv
-Assignment,Category,Grade,Weight
-Group Coding Lab,FA,19,30
-Discussion Forum,FA,56,10
-General Quiz,FA,67,20
-Pre-Summative,SA,45,15
-Individual Lab,SA,81,25
-```
+Right-click inside the folder → “Git Bash Here”
 
-## Part 2: Bash Organizer Script
-
-### Features
-
-- Automatically creates archive directory if needed
-- Finds all CSV files in current directory
-- Renames files with timestamps (YYYYMMDD-HHMMSS format)
-- Moves files to archive directory
-- Logs all operations with file contents to organizer.log
-
-### Usage
-
-```bash
+✔ Step 2 — Make the script executable
 chmod +x organizer.sh
 
+✔ Step 3 — Run the script
 ./organizer.sh
-```
 
-### What It Does
-
-1. Checks for/creates an `archive` directory
-2. Finds all `.csv` files in the current directory
-3. For each CSV file:
-   - Generates a timestamp
-   - Creates new filename: `original-YYYYMMDD-HHMMSS.csv`
-   - Logs the action and file contents to `organizer.log`
-   - Moves file to archive directory
-
-### Example
-
-**Before:**
-```
+📁 Expected Result After Running the Script
+Before running:
 .
 ├── grade-generator.py
 ├── grades.csv
 └── organizer.sh
-```
 
-**After:**
-```
+After running:
 .
-├── archive/
-│   └── grades-20251116-143022.csv
-├── grade-generator.py
+├── archive
+│   └── grades-20251120-175500.csv
 ├── organizer.log
+├── grade-generator.py
 └── organizer.sh
-```
 
-### Log File Format
+📄 Files Included
+File	Description
+grade-generator.py	Python program that calculates grades
+organizer.sh	Executable Bash script to archive CSV files
+grades.csv	Generated CSV containing assignment input
+organizer.log	Log file updated by the shell script
+archive/	Folder containing archived timestamped CSVs
+README.md	Documentation file
 
-The `organizer.log` file contains:
-- Timestamp of archiving operation
-- Original filename
-- New filename with timestamp
-- Complete file contents
-- Operation status
-
-## Installation & Setup
-
-### Prerequisites
-
-- Python 3.6 or higher
-- Bash shell (Linux, macOS, or WSL on Windows)
-
-### Setup Steps
-
-1. Clone the repository:
-```bash
-git clone https://github.com/n-elie7/Lab1-n-elie7
-cd Lab1-n-elie7
-```
-
-2. Make the organizer script executable:
-```bash
-chmod +x organizer.sh
-```
-
-3. Run the grade generator:
-```bash
-python3 grade-generator.py
-```
-
-4. Archive the generated CSV:
-```bash
-./organizer.sh
-```
-
-## Testing the System
-
-### Test Case 1: Passing Student
-
-Enter the following assignments:
-- Group Coding Lab: FA, 19, 30
-- Discussion Forum: FA, 56, 10
-- General Quiz: FA, 67, 20
-- Pre-Summative: SA, 45, 15
-- Individual Lab: SA, 81, 25
-
-**Expected Results:**
-- FA Total: 28.50 / 60
-- SA Total: 27.00 / 40
-- Final Grade: 55.50 / 100
-- GPA: 2.78
-- Status: PASS (both categories ≥50%)
-
-### Test Case 2: Failing Student (Low SA)
-
-Enter assignments where SA total < 50% of SA weights.
-
-**Expected Result:** Status: FAIL
-
-### Test Case 3: Archive Multiple Files
-
-1. Run grade generator multiple times with different data
-2. Run organizer script
-3. Verify all CSV files are archived with unique timestamps
-
-## File Structure
-
-```
-project/
-├── grade-generator.py    # Python grade calculator
-├── organizer.sh          # Bash archiving script
-├── README.md            # This file
-├── grades.csv           # Generated by Python script (before archiving)
-├── archive/             # Created by organizer script
-│   └── grades-*.csv     # Archived files
-└── organizer.log        # Operation logs
-```
-
-## Error Handling
-
-### Python Script
-- Validates all numeric inputs
-- Ensures grades are 0-100
-- Checks category values
-- Requires positive weights
-- Handles empty assignment names
-
-### Bash Script
-- Creates archive directory if missing
-- Handles case of no CSV files
-- Logs errors to organizer.log
-- Provides status feedback
-
-## Key Implementation Details
-
-### Validation
-- Grade range enforcement (0-100%)
-- Category validation (FA/SA only)
-- Weight positivity checks
-- Pass/Fail logic: requires ≥50% in BOTH categories
-
-### CSV Format
-- Header row: `Assignment,Category,Grade,Weight`
-- Data rows with exact values as entered
-- Standard CSV format compatible with Excel/Sheets
-
-### Timestamp Format
-- Pattern: YYYYMMDD-HHMMSS
-- Example: 20251117-173022 (Nov 17, 2025, 17:30:22 PM)
-- Ensures unique filenames for each archive operation
-
-## Troubleshooting
-
-**Issue**: Permission denied when running organizer.sh
-```bash
-chmod +x organizer.sh
-```
-
-**Issue**: Python script not found
-```bash
-python3 grade-generator.py
-# or try:
-python grade-generator.py
-```
-
-**Issue**: CSV not generated
-- Ensure you complete at least one assignment entry
-- Check write permissions in current directory
-
-## Author
-
-Created for Lab 1 Assignment by **Elie**
 
