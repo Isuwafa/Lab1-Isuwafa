@@ -68,7 +68,7 @@ A grades.csv file
 How to Run the Archive Shell Script
 
 The shell script must be executable.
-```
+
 
 - Step 1 — Open Git Bash in the project folder
 
@@ -83,17 +83,18 @@ chmod +x organizer.sh
 - Step 3 — Run the script
 ```bash
 ./organizer.sh
+```
 
 Expected Result After Running the Script
 Before running:
 
-```
+```bash
 .
 ├── grade-generator.py
 ├── grades.csv
 └── organizer.sh
 
-```bash
+```
 
 After running:
 
@@ -105,15 +106,14 @@ After running:
 ├── grade-generator.py
 └── organizer.sh
 
-```bash
+```
 
- Files Included
-File	Description
-grade-generator.py	Python program that calculates grades
-organizer.sh	Executable Bash script to archive CSV files
-grades.csv	Generated CSV containing assignment input
-organizer.log	Log file updated by the shell script
-archive/	Folder containing archived timestamped CSVs
-README.md	Documentation file
+Files Included,File	Description
+grade-generator.py,Python program that calculates grades
+organizer.sh,Executable Bash script to archive CSV files
+grades.csv,Generated CSV containing assignment input
+organizer.log,Log file updated by the shell script
+archive/	Folder,containing archived timestamped CSVs
+README.md,Documentation file
 
 
