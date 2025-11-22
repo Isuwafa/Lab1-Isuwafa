@@ -1,11 +1,10 @@
-Individual Coding Lab – Grade Generator & CSV Archiver
+# Individual Coding Lab – Grade Generator & CSV Archiver
 
-Author: Suwafa Iradukunda
-Course: Introduction to Python Programming and Databases
-Institution: African Leadership University (ALU)
-Term: 2025 September Term
+**Author: Suwafa Iradukunda**
+**Course: Introduction to Python Programming and Databases**
 
-This project contains two main components:
+
+## This project contains two main components:
 
 grade-generator.py
 An interactive Python program that:
@@ -24,7 +23,7 @@ Identifies required resubmissions based on failed formative assessments
 
 Export all data into grades.csv
 
-organizer.sh
+## organizer.sh
 A Bash shell script that:
 
 Archives CSV files in the current folder
@@ -37,13 +36,15 @@ Moves renamed CSV files into an archive/ directory
 
 Is fully executable in a bash environment (Git Bash / Linux / WSL)
 
-🚀 How to Run the Python Program
+## How to Run the Python Program
 
-Make sure Python is installed. Then run:
+Make sure Python is installed. 
+Then run:
+```python 
 
 python3 grade-generator.py
 
-
+``` 
 Follow the prompts to input:
 
 Assignment name
@@ -64,28 +65,39 @@ Resubmission requirements
 
 A grades.csv file
 
-📦 How to Run the Archive Shell Script
+How to Run the Archive Shell Script
 
 The shell script must be executable.
+```
 
-✔ Step 1 — Open Git Bash in the project folder
+- Step 1 — Open Git Bash in the project folder
 
 Right-click inside the folder → “Git Bash Here”
 
-✔ Step 2 — Make the script executable
-chmod +x organizer.sh
+- Step 2 — Make the script executable
 
-✔ Step 3 — Run the script
+```bash
+chmod +x organizer.sh
+```
+
+- Step 3 — Run the script
+```bash
 ./organizer.sh
 
-📁 Expected Result After Running the Script
+Expected Result After Running the Script
 Before running:
+
+```
 .
 ├── grade-generator.py
 ├── grades.csv
 └── organizer.sh
 
+```bash
+
 After running:
+
+```bash
 .
 ├── archive
 │   └── grades-20251120-175500.csv
@@ -93,7 +105,9 @@ After running:
 ├── grade-generator.py
 └── organizer.sh
 
-📄 Files Included
+```bash
+
+ Files Included
 File	Description
 grade-generator.py	Python program that calculates grades
 organizer.sh	Executable Bash script to archive CSV files
