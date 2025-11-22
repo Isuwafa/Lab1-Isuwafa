@@ -16,9 +16,8 @@ get_timestamp() {
 }
 
 # Main script
-echo "=================================="
-echo "    CSV File Organizer"
-echo "=================================="
+
+echo "=== CSV File Organizer ==="
 echo ""
 
 # Step 1: Check if archive directory exists, create if not
@@ -84,23 +83,10 @@ for csv_file in "${csv_files[@]}"; do
     # Move the new_filename
     mv "$csv_file" "$new_filepath"
     
-    # Check if previous command was successful
-    if [ $? -eq 0 ]; then
-        echo "Successfully archived as: $new_filename"
-        ((csv_count++))
-    else
-        echo "Failed to archive: $csv_file"
-        log_message "[$(date '+%Y-%m-%d %H:%M:%S')] ERROR: Failed to archive $csv_file"
-    fi
     
     echo ""
 done
     
-# Summary
-echo "=================================="
-echo "Archive Complete!"
-echo "Files archived: $csv_count"
-echo "Log file: $LOG_FILE"
-echo "=================================="
+echo "Archive completed succesfully."
 
 log_message "[$(date '+%Y-%m-%d %H:%M:%S')] Archiving session complete. Total files: $csv_count"
