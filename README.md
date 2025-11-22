@@ -108,12 +108,12 @@ After running:
 
 ```
 
-Files Included,File	Description
-grade-generator.py,Python program that calculates grades
-organizer.sh,Executable Bash script to archive CSV files
-grades.csv,Generated CSV containing assignment input
-organizer.log,Log file updated by the shell script
-archive/	Folder,containing archived timestamped CSVs
-README.md,Documentation file
+Files Included        File	Description
+grade-generator.py    Python program that calculates grades
+organizer.sh          Executable Bash script to archive CSV files
+grades.csv            Generated CSV containing assignment input
+organizer.log         Log file updated by the shell script
+archive/	Folder       containing archived timestamped CSVs
+README.md             Documentation file
 
 
